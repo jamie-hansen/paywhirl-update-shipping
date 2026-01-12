@@ -1,0 +1,28 @@
+run = "npm run start"
+modules = ["nodejs-20", "python-3.11"]
+
+[agent]
+expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "PayWhirl Shipping Update"
+
+[[workflows.workflow]]
+name = "PayWhirl Shipping Update"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm start"
+
+[workflows.workflow.metadata]
+outputType = "console"

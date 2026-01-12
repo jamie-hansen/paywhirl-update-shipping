@@ -1,0 +1,16 @@
+{
+  "name": "paywhirl-shipping-update",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "batch": "node src/index.js --batch data/updates.csv --yes"
+  },
+  "dependencies": {
+    "axios": "^1.7.5",
+    "csv-parse": "^5.5.6",
+    "csv-stringify": "^6.5.1",
+    "luxon": "^3.5.0",
+    "yargs": "^17.7.2"
+  }
+}
