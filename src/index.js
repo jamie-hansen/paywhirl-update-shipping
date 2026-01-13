@@ -81,9 +81,17 @@ async function main() {
     
     console.log(`Starting batch process for ${records.length} subscriptions...`);
     
+    let processedCount = 0;
     for (const record of records) {
       const res = await processUpdate(record.subscription_id, record.new_delivery_price, argv.yes);
       results.push(res);
+      processedCount++;
+
+      if (processedCount % 30 === 0 && processedCount < records.length) {
+        console.log(`\nThrottle: pausing for 60s after 30 updates…`);
+        await new Promise(resolve => setTimeout(resolve, 60000));
+        console.log(`Resume: Continuing batch processing.`);
+      }
     }
     
     console.log('\n--- Batch Summary ---');
