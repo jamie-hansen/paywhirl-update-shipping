@@ -77,7 +77,7 @@ async function main() {
     }
     
     const content = fs.readFileSync(csvPath);
-    const records = parse(content, { columns: true, skip_empty_lines: true });
+    const records = parse(content, { columns: true, skip_empty_lines: true, delimiter: '\t' });
     
     console.log(`Starting batch process for ${records.length} subscriptions...`);
     
